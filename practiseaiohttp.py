@@ -19,10 +19,11 @@ async def main():
             html = await response.text()
             soup = bs(html,'html.parser')
             
-            # print(html)
-            # print("Body:", html[:15], "...")
+            # print(soup.find(class_='skip-link'))
+            mainnav = soup.find('nav', id='mainnav')
             
-            print(soup.find(class_='skip-link'))
+            for a in mainnav.find_all('a'):
+                print(a.string)
 
 asyncio.set_event_loop_policy(MyPolicy())
 asyncio.run(main())
