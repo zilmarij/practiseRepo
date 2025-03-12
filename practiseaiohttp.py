@@ -21,9 +21,11 @@ async def main():
             
             # print(soup.find(class_='skip-link'))
             mainnav = soup.find('nav', id='mainnav')
+            # print(mainnav)
+            for a in mainnav.find_all('li', class_='tier-1'):
+                print(a.a.string)
+                
             
-            for a in mainnav.find_all('a'):
-                print(a.string)
 
 asyncio.set_event_loop_policy(MyPolicy())
 asyncio.run(main())
